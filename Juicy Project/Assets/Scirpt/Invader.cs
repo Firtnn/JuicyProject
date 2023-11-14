@@ -42,9 +42,6 @@ public class Invader : MonoBehaviour
             this.killed.Invoke();
             this.gameObject.SetActive(false);
         }
-        //else if (other.gameObject.layer == LayerMask.NameToLayer("Boundary"))
-        //{
-        //    GameManager.Instance.OnBoundaryReached();
-        //}
+        
     }
 }
