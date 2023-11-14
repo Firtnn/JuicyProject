@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
@@ -9,17 +10,20 @@ public class Player : MonoBehaviour
 
     [SerializeField] private float speed = 5.0f;
 
+    [SerializeField] private UnityEvent OnShoot;
+    [SerializeField] private UnityEvent OnHit;
+    
     private bool _bulletActive;
 
     private void Update()
     {
         if(Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
-            this.transform.position += Vector3.left * this.speed * Time.deltaTime;
+            transform.position += Vector3.left * speed * Time.deltaTime;
         }
         else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
         {
-            this.transform.position += Vector3.right * this.speed * Time.deltaTime;
+            transform.position += Vector3.right * speed * Time.deltaTime;
         }
 
         if(Input.GetKeyUp(KeyCode.Space) || Input.GetMouseButtonDown(0))
@@ -32,10 +36,10 @@ public class Player : MonoBehaviour
     {
         if (!_bulletActive)
         {
-
-            Bullet bullet = Instantiate(this.bulletPrefab, this.transform.position, Quaternion.identity);
+            Bullet bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
             bullet.destroyed += BulletDestoyed;
             _bulletActive = true;
+            OnShoot.Invoke();
         }
     }
 
