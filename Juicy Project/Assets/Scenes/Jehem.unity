@@ -186,6 +186,7 @@ MonoBehaviour:
     m_RotationOrder: 4
   bulletPrefab: {fileID: 370007664335970637, guid: 7e3348d3edd18864082e8809ce3a907c, type: 3}
   missileAttackRate: 1
+  distanceBetweenInvader: 2
 --- !u!4 &577717192
 Transform:
   m_ObjectHideFlags: 0
@@ -201,6 +202,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &600822929 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 375305957170044707, guid: e3caef53f937d944abc38e910b75ccf5, type: 3}
+  m_PrefabInstance: {fileID: 1311435645}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e34755a0fe6ac84ebdd229f6414f5fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &897665434
 GameObject:
   m_ObjectHideFlags: 0
@@ -606,6 +618,21 @@ MonoBehaviour:
   shakeStrenght: 0.5
   camPosition: {x: 0, y: 0, z: -10}
   camRotation: {x: 0, y: 0, z: 0, w: 0}
+  cameraShake:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 600822929}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: Play
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!4 &1396030993
 Transform:
   m_ObjectHideFlags: 0

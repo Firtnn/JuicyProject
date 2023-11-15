@@ -48,6 +48,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 493668252952946139, guid: 6d9bff009d8a3c647ac29f6f80e7c6d4, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 552557456034862444, guid: 6d9bff009d8a3c647ac29f6f80e7c6d4, type: 3}
       propertyPath: m_Name
       value: Invader_01

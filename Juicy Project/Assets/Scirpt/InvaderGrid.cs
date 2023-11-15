@@ -17,6 +17,8 @@ public class InvaderGrid : MonoBehaviour
 
     [SerializeField] private float missileAttackRate = 1.0f;
 
+    [SerializeField] private float distanceBetweenInvader = 2.0f;
+
   
 
     public int amountKilled { get; private set; }
@@ -35,7 +37,7 @@ public class InvaderGrid : MonoBehaviour
             float width = 2.0f * (this.columns - 1);
             float height = 2.0f * (this.rows - 1);
             Vector2 centering = new Vector2 (-width/2, -height/2);
-            Vector3 rowPosition = new Vector3(centering.x, centering.y + (row * 2.0f), 0.0f);
+            Vector3 rowPosition = new Vector3(centering.x, centering.y + (row * distanceBetweenInvader), 0.0f);
 
             for (int col = 0; col < this.columns; col++)
             {
@@ -45,7 +47,7 @@ public class InvaderGrid : MonoBehaviour
 
 
                 Vector3 position = rowPosition;
-                position.x += col * 2.0f;
+                position.x += col * distanceBetweenInvader;
                 invader.transform.localPosition = position;
             }
         }

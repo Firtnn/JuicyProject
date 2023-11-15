@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class CameraShake : MonoBehaviour
 {
@@ -12,7 +13,6 @@ public class CameraShake : MonoBehaviour
     private bool isShaking = false;
     [SerializeField] private Vector3 camPosition;
     [SerializeField] private Quaternion camRotation;
-
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
