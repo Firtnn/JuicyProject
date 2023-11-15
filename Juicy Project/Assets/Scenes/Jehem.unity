@@ -423,6 +423,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: -8598269539046310275, guid: cbd46f3dd07227944acb11363aa3177e, type: 3}
   speed: 5
+  OnShoot:
+    m_PersistentCalls:
+      m_Calls: []
+  OnHit:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1384081782
 GameObject:
   m_ObjectHideFlags: 0
@@ -494,7 +500,7 @@ Transform:
   m_GameObject: {fileID: 1384081782}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -15.5, z: 0}
+  m_LocalPosition: {x: 0, y: -36.3, z: 0}
   m_LocalScale: {x: 30, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
