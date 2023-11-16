@@ -46,6 +46,7 @@ public class Invader : MonoBehaviour
         {
             this.killed.Invoke();
             anim.SetTrigger("death");
+            StartCoroutine(Death());
         }
     }
 
@@ -53,5 +54,6 @@ public class Invader : MonoBehaviour
     {
         yield return new WaitForSeconds(1);
         this.gameObject.SetActive(false);
+        
     }
 }
