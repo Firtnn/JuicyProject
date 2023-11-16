@@ -11,6 +11,8 @@ public class Player : MonoBehaviour
     [SerializeField] private float speed = 5.0f;
 
     [SerializeField] private UnityEvent OnShoot;
+    [SerializeField] private UnityEvent OnMoveRight;
+    [SerializeField] private UnityEvent OnMoveLeft;
     [SerializeField] private UnityEvent OnHit;
     
     private bool _bulletActive;
@@ -20,10 +22,12 @@ public class Player : MonoBehaviour
         if(Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
             transform.position += Vector3.left * speed * Time.deltaTime;
+            OnMoveLeft.Invoke();
         }
         else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
         {
             transform.position += Vector3.right * speed * Time.deltaTime;
+            OnMoveRight.Invoke();
         }
 
         if(Input.GetKeyUp(KeyCode.Space) || Input.GetMouseButtonDown(0))

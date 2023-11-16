@@ -36,7 +36,7 @@ public class InvaderGrid : MonoBehaviour
         {
             float width = 2.0f * (this.columns - 1);
             float height = 2.0f * (this.rows - 1);
-            Vector2 centering = new Vector2 (-width/2, -height/2);
+            Vector2 centering = new Vector2 (-width/1.4f, -height/1.4f);
             Vector3 rowPosition = new Vector3(centering.x, centering.y + (row * distanceBetweenInvader), 0.0f);
 
             for (int col = 0; col < this.columns; col++)
@@ -72,11 +72,11 @@ public class InvaderGrid : MonoBehaviour
             {
                 continue;
             }
-            if(_direction == Vector3.right && invader.position.x >= (rightEdge.x - 1.0f))
+            if(_direction == Vector3.right && invader.position.x >= (rightEdge.x - 2.0f))
             {
                 AdvanceRow();
             }
-            else if(_direction == Vector3.left && invader.position.x <= (leftEdge.x + 1.0f))
+            else if(_direction == Vector3.left && invader.position.x <= (leftEdge.x + 2.0f))
             {
                 AdvanceRow();
             }
