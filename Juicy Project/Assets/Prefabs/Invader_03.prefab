@@ -101,6 +101,10 @@ PrefabInstance:
       value: Invader_03
       objectReference: {fileID: 0}
     - target: {fileID: 2202538092351398172, guid: 6d9bff009d8a3c647ac29f6f80e7c6d4, type: 3}
+      propertyPath: audio
+      value: 
+      objectReference: {fileID: 375305957170044707, guid: e3caef53f937d944abc38e910b75ccf5, type: 3}
+    - target: {fileID: 2202538092351398172, guid: 6d9bff009d8a3c647ac29f6f80e7c6d4, type: 3}
       propertyPath: animationSprites.Array.size
       value: 1
       objectReference: {fileID: 0}

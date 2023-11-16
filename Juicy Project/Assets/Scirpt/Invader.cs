@@ -14,6 +14,8 @@ public class Invader : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private Animator anim;
 
+    [SerializeField] private AudioManager audio;
+
     private int animationFrame;
 
     private void Awake()
@@ -46,6 +48,7 @@ public class Invader : MonoBehaviour
         {
             this.killed.Invoke();
             anim.SetTrigger("death");
+            audio.Play("prout");
             StartCoroutine(Death());
         }
     }

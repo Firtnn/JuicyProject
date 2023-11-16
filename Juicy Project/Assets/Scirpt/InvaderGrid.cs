@@ -19,7 +19,7 @@ public class InvaderGrid : MonoBehaviour
 
     [SerializeField] private float distanceBetweenInvader = 2.0f;
 
-  
+    [SerializeField] private AudioManager audio;
 
     public int amountKilled { get; private set; }
 
@@ -103,6 +103,7 @@ public class InvaderGrid : MonoBehaviour
             if(Random.value < (1.0f / (float)this.amountAlive))
             {
                 Instantiate(this.bulletPrefab, invader.position, Quaternion.identity);
+                audio.Play("bulles");
                 break;
             }
         }

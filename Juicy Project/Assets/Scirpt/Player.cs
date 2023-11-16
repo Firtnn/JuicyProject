@@ -14,7 +14,9 @@ public class Player : MonoBehaviour
     [SerializeField] private UnityEvent OnMoveRight;
     [SerializeField] private UnityEvent OnMoveLeft;
     [SerializeField] private UnityEvent OnHit;
-    
+
+    [SerializeField] private AudioManager audio;
+
     private bool _bulletActive;
 
     private void Update()
@@ -43,6 +45,7 @@ public class Player : MonoBehaviour
             Bullet bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
             bullet.destroyed += BulletDestoyed;
             _bulletActive = true;
+            audio.Play("Shoot");
             OnShoot.Invoke();
         }
     }
