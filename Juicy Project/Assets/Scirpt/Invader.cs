@@ -13,6 +13,7 @@ public class Invader : MonoBehaviour
     public System.Action killed;
     private SpriteRenderer spriteRenderer;
     private Animator anim;
+    private ParticleSystem part;
 
     [SerializeField] private AudioManager audio;
 
@@ -22,12 +23,13 @@ public class Invader : MonoBehaviour
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.sprite = animationSprites[0];
+        part = GetComponent<ParticleSystem>();
+        anim = GetComponent<Animator>();
     }
 
     private void Start()
     {
         InvokeRepeating(nameof(AnimateSprite), animationTime, animationTime);
-        anim = GetComponent<Animator>();
     }
 
     private void AnimateSprite()
@@ -49,6 +51,7 @@ public class Invader : MonoBehaviour
             this.killed.Invoke();
             anim.SetTrigger("death");
             audio.Play("prout");
+            part.Play();
             StartCoroutine(Death());
         }
     }

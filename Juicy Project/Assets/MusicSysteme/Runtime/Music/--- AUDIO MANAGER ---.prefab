@@ -44,12 +44,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e34755a0fe6ac84ebdd229f6414f5fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sounds:
-  - name: Background Music
-    clip: {fileID: 8300000, guid: b069dddd10a2f9741a4b7ad991292241, type: 3}
-    volume: 0.2
-    pitch: 1
-    loop: 1
-    atStart: 1
-    audioMixer: {fileID: -6096316052974353367, guid: 0c6b2eac056653844b45d51c32278b32, type: 2}
-    actualSound: 4
+  sounds: []
