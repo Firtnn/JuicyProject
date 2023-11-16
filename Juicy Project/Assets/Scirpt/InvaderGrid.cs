@@ -72,11 +72,11 @@ public class InvaderGrid : MonoBehaviour
             {
                 continue;
             }
-            if(_direction == Vector3.right && invader.position.x >= (rightEdge.x - 3.2f))
+            if(_direction == Vector3.right && invader.position.x >= (rightEdge.x - 3.4f))
             {
                 AdvanceRow();
             }
-            else if(_direction == Vector3.left && invader.position.x <= (leftEdge.x + 3.2f))
+            else if(_direction == Vector3.left && invader.position.x <= (leftEdge.x + 3.4f))
             {
                 AdvanceRow();
             }
