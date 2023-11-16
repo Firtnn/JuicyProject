@@ -10,6 +10,10 @@ public class Player : MonoBehaviour
     [SerializeField] private float speed = 5.0f;
 
     private bool _bulletActive;
+    
+    
+    
+    
 
     private void Update()
     {
@@ -21,6 +25,8 @@ public class Player : MonoBehaviour
         {
             this.transform.position += Vector3.right * this.speed * Time.deltaTime;
         }
+        
+        
 
         if(Input.GetKeyUp(KeyCode.Space) || Input.GetMouseButtonDown(0))
         {
