@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Invader : MonoBehaviour
 {
     [SerializeField]private Sprite[] animationSprites;
+
+    [SerializeField] private UnityEvent OnKilled; 
 
     [SerializeField] float animationTime = 1.0f;
     public System.Action killed;
