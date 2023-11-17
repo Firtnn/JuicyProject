@@ -1,14 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Invader : MonoBehaviour
 {
-    [SerializeField]private Sprite[] animationSprites;
+    [SerializeField] private Sprite[] animationSprites;
+
+    [SerializeField] private UnityEvent OnKilled;
 
     [SerializeField] float animationTime = 1.0f;
     public System.Action killed;
     private SpriteRenderer spriteRenderer;
+    private Animator anim;
+    private ParticleSystem part;
+
+    [SerializeField] private AudioManager audio;
 
     private int animationFrame;
 
@@ -16,6 +23,8 @@ public class Invader : MonoBehaviour
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.sprite = animationSprites[0];
+        part = GetComponent<ParticleSystem>();
+        anim = GetComponent<Animator>();
     }
 
     private void Start()
@@ -40,8 +49,17 @@ public class Invader : MonoBehaviour
         if (other.gameObject.layer == LayerMask.NameToLayer("Laser"))
         {
             this.killed.Invoke();
-            this.gameObject.SetActive(false);
+            anim.SetTrigger("death");
+            audio.Play("prout");
+            part.Play();
+            StartCoroutine(Death());
         }
+    }
+
+    IEnumerator Death()
+    {
+        yield return new WaitForSeconds(1);
+        this.gameObject.SetActive(false);
         
     }
 }

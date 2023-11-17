@@ -19,7 +19,7 @@ public class InvaderGrid : MonoBehaviour
 
     [SerializeField] private float distanceBetweenInvader = 2.0f;
 
-  
+    [SerializeField] private AudioManager audio;
 
     public int amountKilled { get; private set; }
 
@@ -36,7 +36,7 @@ public class InvaderGrid : MonoBehaviour
         {
             float width = 2.0f * (this.columns - 1);
             float height = 2.0f * (this.rows - 1);
-            Vector2 centering = new Vector2 (-width/2, -height/2);
+            Vector2 centering = new Vector2 (-width/1.3f, -height/0.8f);
             Vector3 rowPosition = new Vector3(centering.x, centering.y + (row * distanceBetweenInvader), 0.0f);
 
             for (int col = 0; col < this.columns; col++)
@@ -72,11 +72,11 @@ public class InvaderGrid : MonoBehaviour
             {
                 continue;
             }
-            if(_direction == Vector3.right && invader.position.x >= (rightEdge.x - 1.0f))
+            if(_direction == Vector3.right && invader.position.x >= (rightEdge.x - 3.4f))
             {
                 AdvanceRow();
             }
-            else if(_direction == Vector3.left && invader.position.x <= (leftEdge.x + 1.0f))
+            else if(_direction == Vector3.left && invader.position.x <= (leftEdge.x + 3.4f))
             {
                 AdvanceRow();
             }
@@ -103,6 +103,7 @@ public class InvaderGrid : MonoBehaviour
             if(Random.value < (1.0f / (float)this.amountAlive))
             {
                 Instantiate(this.bulletPrefab, invader.position, Quaternion.identity);
+                audio.Play("bulles");
                 break;
             }
         }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
@@ -8,6 +9,13 @@ public class Player : MonoBehaviour
     [SerializeField] private Bullet bulletPrefab;
 
     [SerializeField] private float speed = 5.0f;
+
+    [SerializeField] private UnityEvent OnShoot;
+    [SerializeField] private UnityEvent OnMoveRight;
+    [SerializeField] private UnityEvent OnMoveLeft;
+    [SerializeField] private UnityEvent OnHit;
+
+    [SerializeField] private AudioManager audio;
 
     private bool _bulletActive;
     
@@ -19,11 +27,13 @@ public class Player : MonoBehaviour
     {
         if(Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
-            this.transform.position += Vector3.left * this.speed * Time.deltaTime;
+            transform.position += Vector3.left * speed * Time.deltaTime;
+            OnMoveLeft.Invoke();
         }
         else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
         {
-            this.transform.position += Vector3.right * this.speed * Time.deltaTime;
+            transform.position += Vector3.right * speed * Time.deltaTime;
+            OnMoveRight.Invoke();
         }
         
         
@@ -38,10 +48,11 @@ public class Player : MonoBehaviour
     {
         if (!_bulletActive)
         {
-
-            Bullet bullet = Instantiate(this.bulletPrefab, this.transform.position, Quaternion.identity);
+            Bullet bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
             bullet.destroyed += BulletDestoyed;
             _bulletActive = true;
+            audio.Play("Shoot");
+            OnShoot.Invoke();
         }
     }
 
