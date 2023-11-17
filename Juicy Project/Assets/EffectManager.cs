@@ -50,7 +50,7 @@ public class EffectManager : MonoBehaviour
         {
             EffectThree();
         }
-        if (Input.GetKeyDown(KeyCode.Alpha5))
+        if (Input.GetKeyDown(KeyCode.Alpha4))
         {
             if (effect5 == false)
             {
@@ -61,7 +61,7 @@ public class EffectManager : MonoBehaviour
                 effect5 = false;
             }
         }
-        if (Input.GetKeyDown(KeyCode.Alpha6))
+        if (Input.GetKeyDown(KeyCode.Alpha5))
         {
             if (effect6 == false)
             {
@@ -72,7 +72,14 @@ public class EffectManager : MonoBehaviour
                 effect6 = false;
             }
         }
-        
+        if (Input.GetKeyDown(KeyCode.Alpha6))
+        {
+            EffectFour();
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha7))
+        {
+            EffectFive();
+        }
     }
 
     void EffectOne()
@@ -111,6 +118,32 @@ public class EffectManager : MonoBehaviour
         else
         {
             _effect[2].Stop(true, _systemStopBehavior);
+            Debug.Log("je te desactive");
+        }
+    }
+    void EffectFour()
+    {
+        if (!_effect[3].isEmitting)
+        {
+            _effect[3].Play();
+            Debug.Log("je t'active");
+        }
+        else
+        {
+            _effect[3].Stop(true, _systemStopBehavior);
+            Debug.Log("je te desactive");
+        }
+    }
+    void EffectFive()
+    {
+        if (!_effect[4].isEmitting)
+        {
+            _effect[4].Play();
+            Debug.Log("je t'active");
+        }
+        else
+        {
+            _effect[4].Stop(true, _systemStopBehavior);
             Debug.Log("je te desactive");
         }
     }
