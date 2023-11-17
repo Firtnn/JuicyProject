@@ -19,18 +19,35 @@ public class Player : MonoBehaviour
 
     private bool _bulletActive;
 
+
+    private bool CityCanMove = false;
+    
+
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            boolForCity();
+        }
+        
         if(Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
             transform.position += Vector3.left * speed * Time.deltaTime;
-            OnMoveLeft.Invoke();
+            if (CityCanMove == false)
+            {
+                OnMoveLeft.Invoke();
+            }
         }
         else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
         {
             transform.position += Vector3.right * speed * Time.deltaTime;
-            OnMoveRight.Invoke();
+            if (CityCanMove == false)
+            {
+                OnMoveRight.Invoke();
+            }
         }
+        
+        
 
         if(Input.GetKeyUp(KeyCode.Space) || Input.GetMouseButtonDown(0))
         {
@@ -45,7 +62,7 @@ public class Player : MonoBehaviour
             Bullet bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
             bullet.destroyed += BulletDestoyed;
             _bulletActive = true;
-            audio.Play("Shoot");
+            // audio.Play("Shoot");
             OnShoot.Invoke();
         }
     }
@@ -53,6 +70,17 @@ public class Player : MonoBehaviour
     private void BulletDestoyed()
     {
         _bulletActive = false;
+    }
+    void boolForCity()
+    {
+        if (CityCanMove == false)
+        {
+            CityCanMove = true;
+        }
+        else
+        {
+            CityCanMove = false;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)

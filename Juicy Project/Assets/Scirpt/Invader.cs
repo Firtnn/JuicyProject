@@ -48,18 +48,26 @@ public class Invader : MonoBehaviour
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Laser"))
         {
-            this.killed.Invoke();
-            anim.SetTrigger("death");
+            if (!EffectManager.Instance.effect6)
+            {
+                anim.SetTrigger("death");
+                this.killed.Invoke();
+                part.Play();
+
+            }
+            
             audio.Play("prout");
-            part.Play();
             StartCoroutine(Death());
         }
     }
 
     IEnumerator Death()
     {
-        yield return new WaitForSeconds(1.5f);
+        
+        yield return new WaitForSeconds(1);
         this.gameObject.SetActive(false);
+        
+        
         
     }
 }
