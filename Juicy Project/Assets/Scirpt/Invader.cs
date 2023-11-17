@@ -58,7 +58,7 @@ public class Invader : MonoBehaviour
 
     IEnumerator Death()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(1.5f);
         this.gameObject.SetActive(false);
         
     }
