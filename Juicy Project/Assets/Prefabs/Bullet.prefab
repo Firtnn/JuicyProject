@@ -148,6 +148,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   direction: {x: 0, y: 1, z: 0}
   speed: 30
+  _effect: {fileID: 3689070513130577560}
+  _effect2: {fileID: 3689070513130577560}
 --- !u!50 &2232609443600395888
 Rigidbody2D:
   serializedVersion: 4

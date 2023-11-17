@@ -9,6 +9,27 @@ public class EffectManager : MonoBehaviour
     
     private ParticleSystemStopBehavior _systemStopBehavior;
 
+    private static EffectManager instance = null;
+    public static EffectManager Instance => instance;
+
+    public bool effect5;
+    public bool effect6;
+    
+
+    private void Awake()
+    {
+        if (instance != null && instance != this)
+        {
+            Destroy(this.gameObject);
+            return;
+        }
+        else
+        {
+            instance = this;
+        }
+        DontDestroyOnLoad(this.gameObject);
+    }
+
     private void Start()
     {
         _systemStopBehavior = ParticleSystemStopBehavior.StopEmitting;
@@ -29,26 +50,29 @@ public class EffectManager : MonoBehaviour
         {
             EffectThree();
         }
-        if (Input.GetKeyDown(KeyCode.Alpha4))
-        {
-            EffectFour();
-        }
         if (Input.GetKeyDown(KeyCode.Alpha5))
         {
-            EffectFive();
+            if (effect5 == false)
+            {
+                effect5 = true;
+            }
+            else
+            {
+                effect5 = false;
+            }
         }
         if (Input.GetKeyDown(KeyCode.Alpha6))
         {
-            EffectSix();
+            if (effect6 == false)
+            {
+                effect6 = true;
+            }
+            else
+            {
+                effect6 = false;
+            }
         }
-        if (Input.GetKeyDown(KeyCode.Alpha7))
-        {
-            EffectSeven();
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha8))
-        {
-            EffectHeight();
-        }
+        
     }
 
     void EffectOne()
@@ -90,71 +114,7 @@ public class EffectManager : MonoBehaviour
             Debug.Log("je te desactive");
         }
     }
-    void EffectFour()
-    {
-        if (!_effect[3].isEmitting)
-        {
-            _effect[3].Play();
-            Debug.Log("je t'active");
-        }
-        else
-        {
-            _effect[3].Stop(true, _systemStopBehavior);
-            Debug.Log("je te desactive");
-        }
-    }
-    void EffectFive()
-    {
-        if (!_effect[4].isEmitting)
-        {
-            _effect[4].Play();
-            Debug.Log("je t'active");
-        }
-        else
-        {
-            _effect[4].Stop(true, _systemStopBehavior);
-            Debug.Log("je te desactive");
-        }
-    }
-    void EffectSix()
-    {
-        if (!_effect[5].isEmitting)
-        {
-            _effect[5].Play();
-            Debug.Log("je t'active");
-        }
-        else
-        {
-            _effect[5].Stop(true, _systemStopBehavior);
-            Debug.Log("je te desactive");
-        }
-    }
-    void EffectSeven()
-    {
-        if (!_effect[6].isEmitting)
-        {
-            _effect[6].Play();
-            Debug.Log("je t'active");
-        }
-        else
-        {
-            _effect[6].Stop(true, _systemStopBehavior);
-            Debug.Log("je te desactive");
-        }
-    }
-    void EffectHeight()
-    {
-        if (!_effect[7].isEmitting)
-        {
-            _effect[7].Play();
-            Debug.Log("je t'active");
-        }
-        else
-        {
-            _effect[7].Stop(true, _systemStopBehavior);
-            Debug.Log("je te desactive");
-        }
-    }
+    
     
     
 }
